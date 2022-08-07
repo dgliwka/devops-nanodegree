@@ -1,0 +1,23 @@
+{
+	"builders": [{
+		"type": "azure-arm",
+		"use_azure_cli_auth": true,
+		"os_type": "Linux",
+		"image_publisher": "Canonical",
+		"image_offer": "UbuntuServer",
+		"image_sku": "18.04-lts",
+		"managed_image_resource_group_name": "project-1-rg",
+		"managed_image_name": "project-1-image",
+		"location": "westeurope",
+		"vm_size": "Standard_D2s_v3",
+		"azure_tags": [{"createdby": "packer"}]
+	}],
+	"provisioners": [{
+		"inline": [
+			"echo 'Hello, World!' > index.html",
+			"nohup busybox httpd -f -p 80 &"
+		],
+		"inline_shebang": "/bin/sh -x",
+		"type": "shell"
+	}]
+}

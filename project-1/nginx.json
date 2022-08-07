@@ -1,0 +1,24 @@
+{
+	"builders": [{
+		"type": "azure-arm",
+		"use_azure_cli_auth": true,
+		"os_type": "Linux",
+		"image_publisher": "Canonical",
+		"image_offer": "UbuntuServer",
+		"image_sku": "18.04-lts",
+		"managed_image_resource_group_name": "project-1-rg",
+		"managed_image_name": "project-1-image",
+		"location": "westeurope",
+		"vm_size": "Standard_D2s_v3",
+		"azure_tags": [{"createdby": "packer"}]
+	}],
+	"provisioners": [{
+		"inline": [
+			"sudo apt-get update && sudo apt-get install -y nginx && sudo apt-get clean",
+			"sudo systemctl enable nginx",
+			"echo 'Hello, World!' | sudo tee /var/www/html/index.html"
+		],
+		"inline_shebang": "/bin/sh -x",
+		"type": "shell"
+	}]
+}
