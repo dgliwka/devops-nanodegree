@@ -1,0 +1,25 @@
+name: Python application test with Github Actions
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./project-2
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.10.6
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.10.6
+      - name: Install dependencies
+        run: |
+          make install
+      - name: Lint with pylint
+        run: |
+          make lint
+      - name: Test with pytest
+        run: |
+          make test
