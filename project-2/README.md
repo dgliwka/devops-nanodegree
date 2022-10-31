@@ -81,8 +81,6 @@ Project can be enhanced in the following ways:
 * Add packing and deployment of the app as a Docker container.
 * Add deployment to Azure Kubernetes Service.
 
-## Demo 
+## Demo time
 
-<TODO: Add link Screencast on YouTube>
-
-## 
+[Screencast on YouTube](https://youtu.be/TgOeyB6Glcc)
